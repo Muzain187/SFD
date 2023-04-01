@@ -84,7 +84,7 @@ if __name__ == "__main__":
     label.pack()
 
     ID_input = tk.Entry(root,width=30,font=('Arial', 14), bd=5, relief='groove',borderwidth=0)
-    # ID_input.config(height=5)
+
     ID_input.pack(fill=tk.X, padx=40, pady=40)
     print(ID_input)
     app = Keyboard(master=root)

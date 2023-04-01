@@ -22,7 +22,7 @@ def main(root):
     line = tk.Frame(root, height=1, bg='black')
     line.pack(fill=tk.X,pady=100)
 
-    
+
 
     
     root.mainloop()
