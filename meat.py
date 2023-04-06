@@ -11,16 +11,21 @@ def read_sensor():
         sensor_result += 6.5
         if sensor_result >= 40:
             break
-        time.sleep(1) 
+        time.sleep(0.5) 
 
 
 def print_result():
     print("printing")
 
 
+    
+
+
+
 
 
 def meat_screen(root,new_window,tk):
+ 
     new_window.title("Meat Freshness")
 
     new_window.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
@@ -33,8 +38,11 @@ def meat_screen(root,new_window,tk):
     label.place(relx=0.5, rely=0.1, anchor=tk.CENTER,relwidth=0.5)
 
     global sensor_result
-    label2 = tk.Label(DisplayFrame, text="Sensor Result: {}".format(sensor_result), font=("Arial", 20), bg='white')
-    label2.place(relx=0.5, rely=0.2, anchor=tk.CENTER,relwidth=0.5)
+    Sensor_value = tk.Label(DisplayFrame, text="Sensor Result: {}".format(sensor_result), font=("Arial", 20), bg='white')
+    Sensor_value.place(relx=0.5, rely=0.3, anchor=tk.CENTER,relwidth=0.5)
+
+    Environment_value = tk.Label(DisplayFrame, text="Environment Result: {}".format(sensor_result), font=("Arial", 20), bg='white')
+    Environment_value.place(relx=0.5, rely=0.6, anchor=tk.CENTER,relwidth=0.5)
 
 
     
@@ -45,15 +53,28 @@ def meat_screen(root,new_window,tk):
 
 
     buttonFrame = tk.Frame(new_window, bg='white',relief=tk.SOLID, width=200, height=100)
-    buttonFrame.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
+    buttonFrame.pack(expand=True, fill=tk.BOTH, padx=5, pady=5)
 
-    button1 = tk.Button(buttonFrame, text="Save", height=2,command=print_result)
-    button1.place(relx=0.50, rely=0.4, relwidth=0.4, anchor=tk.CENTER)
+    savebtn = tk.Button(buttonFrame, text="Save", height=2,command=print_result)
+    savebtn.place(relx=0.3, rely=0.4, relwidth=0.2, anchor=tk.CENTER)
+
+    exportbtn = tk.Button(buttonFrame, text="Export", height=2,command=print_result)
+    exportbtn.place(relx=0.55, rely=0.4, relwidth=0.2, anchor=tk.CENTER)
+
+
+    def goback():
+        global sensor_result
+        sensor_result = 1.0
+        new_window.destroy()
+
+
+    backbtn = tk.Button(buttonFrame, text="<- Back", height=2,command=goback)
+    backbtn.place(relx=0.78, rely=0.4, relwidth=0.2, anchor=tk.CENTER)   
 
 
     # root.after(1000, update_display)
     def update_label():
-        label2.config(text=f'PH Sensor Value: {sensor_result:.2f}')
+        Sensor_value.config(text=f'PH Sensor Value: {sensor_result:.2f}')
 
         if sensor_result >= 40:
             Result = tk.Label(DisplayFrame, text="Finished", font=("Arial", 20), bg='white')

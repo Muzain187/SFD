@@ -55,7 +55,7 @@ class Keyboard(tk.Frame):
                         "phone": "555-1234"
                     }     
             }
-
+            self.close_keyboard()
             # Write the response to a local file
             with open("Restaurent_data.json", "w") as f:
                 json.dump(response, f)
@@ -65,6 +65,9 @@ class Keyboard(tk.Frame):
             new_window.configure(bg='white')
             home.main(new_window)
             # home.meat_screen(root,new_window,tk)
+        else:
+            label = tk.Label(root, text="Invalid id")
+            label.pack()
 
     def close_keyboard(self):
         # pass

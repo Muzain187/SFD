@@ -13,6 +13,7 @@ def Home_buttons(root):
     def meat_screen():
         new_window = tk.Toplevel(root)
         meat.meat_screen(root,new_window,tk)
+        new_window.mainloop()
 
         
     button1 = tk.Button(root, text="Meat", height=2,command=meat_screen)
